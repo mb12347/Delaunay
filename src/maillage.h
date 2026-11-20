@@ -2,43 +2,58 @@
 #define MAILLAGE_H
 
 #include <vector>
+#include <map>
+#include <iostream>
 
 struct point {
-    double x = 0.;
-    double y = 0.;
-    int ref = 0;
+
+double x;
+double y;
+int ref;
+
 };
 
 struct arete {
-    point p1 = {-1, -1, 0};
-    point p2 = {-1, -1, 0};
-    int ref = 0;
+
+    point p1;
+    point p2;
+    int ref;
 };
 
 struct triangle {
-    arete a1 = {{-1, -1, 0}, {-1, -1, 0}, 0};
-    arete a2 = {{-1, -1, 0}, {-1, -1, 0}, 0};
-    arete a3 = {{-1, -1, 0}, {-1, -1, 0}, 0};
-    int ref = 0;
+
+    arete a1;
+    arete a2;
+    arete a3;
+    
+    int ref;
+    
 };
 
 struct maillage {
-    std::vector<point>    sommets;
-    std::vector<arete>    aretes;      // arêtes de la géométrie d'entrée
-    std::vector<triangle> triangles;
 
-    int nbSommetsEntree = 0;           // nombre de sommets lus dans le fichier
+        std::vector<point> _point_maillage;
+        std::vector<arete> _arete_maillage;
+        std::vector<triangle> _triangle_maillage;
+
 };
 
-// --- vérifications (dans maillage.cpp) ---
+struct geom {
+    std::vector<point> _point_geom;
+    std::vector<arete> _arete_geom;
+};
 
-// triangles bien orientés + voisins réciproques et cohérents
-bool verifierCoherence(const Maillage& m);
 
-// force brute : aucun sommet dans le cercle circonscrit d'un triangle
-bool verifierDelaunay(const Maillage& m);
 
-// affiche le nombre de sommets / arêtes / triangles (non supprimés)
-void afficherInfos(const Maillage& m);
+
+
+
+
+
+
+
+
+
+
 
 #endif
