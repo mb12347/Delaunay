@@ -1,4 +1,4 @@
-#include <stdlib.io>
+#include <cstdlib>
 
 int main() {
     // Your code here
